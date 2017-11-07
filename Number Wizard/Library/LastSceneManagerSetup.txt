@@ -1,0 +1,5 @@
+sceneSetups:
+- path: E:/MCAST ICT 2nd Year/Programming for Computer Games/Unity Projects/Increment
+    Decrement/Assets/MainScene.unity
+  isLoaded: 1
+  isActive: 1
