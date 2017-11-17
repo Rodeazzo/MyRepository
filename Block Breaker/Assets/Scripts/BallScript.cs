@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour {
 
-    public PaddleScript paddle;
+    PaddleScript paddle;
     Vector3 paddleBallPosDiff;
     bool gameStart = false;
 
 	// Use this for initialization
 	void Start () {
+        paddle = GameObject.FindObjectOfType<PaddleScript>();
+
         paddleBallPosDiff = this.transform.position - paddle.transform.position;
 	}
 	
@@ -25,4 +27,11 @@ public class BallScript : MonoBehaviour {
             this.GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);
         }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (gameStart) {
+            GetComponent<AudioSource>().Play();
+        }
+    }
 }
