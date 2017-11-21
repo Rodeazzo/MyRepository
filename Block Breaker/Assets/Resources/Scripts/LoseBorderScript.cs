@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class LoseBorderScript : MonoBehaviour {
 
-    LevelManager levelManager = new LevelManager();
+    LevelManager levelManager;
 
 	// Use this for initialization
 	void Start () {
-	    
+
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
 	}
 
     void OnCollisionEnter2D(Collision2D collision)

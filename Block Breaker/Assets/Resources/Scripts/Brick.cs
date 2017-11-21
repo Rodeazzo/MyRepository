@@ -5,21 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Brick : MonoBehaviour {
 
+    public static int breakableCount = 0;
+
     public int maxHits;
-    public AudioClip crack;
+    AudioClip crack;
 
     int timesHit;
 
+    LevelManager levelManager = new LevelManager();
+
     // Use this for initialization
     void Start () {
+
+        breakableCount++;
+        print(breakableCount);
+        crack = Resources.Load("Sounds/crack", typeof(AudioClip)) as AudioClip;
         timesHit = 0;
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+        
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,7 +36,10 @@ public class Brick : MonoBehaviour {
         print(gameObject.name + " : " + timesHit);
 
         if (timesHit >= maxHits) {
+
             AudioSource.PlayClipAtPoint(crack, this.transform.position);
+            breakableCount--;
+            levelManager.BrickDestroyed();
             Destroy(gameObject);
         }
     }
