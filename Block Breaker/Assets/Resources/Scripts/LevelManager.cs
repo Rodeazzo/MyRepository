@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadNextScene()
+    public static void LoadNextScene()
     {
         // Store index of current scene in variable currentScene
         Brick.breakableCount = 0;
@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour {
         SceneManager.LoadScene(currentScene + 1);
     }
 
-    public void BrickDestroyed()
+    public static void BrickDestroyed()
     {
         if (Brick.breakableCount <= 0)
         {

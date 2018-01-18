@@ -12,8 +12,6 @@ public class Brick : MonoBehaviour {
 
     int timesHit;
 
-    LevelManager levelManager = new LevelManager();
-
     // Use this for initialization
     void Start () {
 
@@ -37,9 +35,11 @@ public class Brick : MonoBehaviour {
 
         if (timesHit >= maxHits) {
 
+            //LevelManager levelManager = new LevelManager();
+
             AudioSource.PlayClipAtPoint(crack, this.transform.position);
             breakableCount--;
-            levelManager.BrickDestroyed();
+            LevelManager.BrickDestroyed();
             Destroy(gameObject);
         }
     }
